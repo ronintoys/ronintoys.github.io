@@ -1,4 +1,46 @@
 **CREDITS**
+
+WEBSITE
 @ruphilka did some of the Creative Direction of the website. 
 @hifinoise did the main structure of the website, along with product shoots, and modifications to the design of the products on the page. Apart from this, @hifinoise also took care of getting the website live, along with @layogtima.
 @crunchy-fluffyal00 executed various design elements, and helped create this fork.
+
+
+_____
+
+PRODUCTS
+RONIN TOYS - Project Record
+Updated: 6th October, 2025
+
+FOUNDER & VISION
+Ruby Paulson (@ruphilka)- All ownership, IP, decision-making
+
+CURRENT PRODUCTS
+1. Reelin - Modified open-source design, ~70% PLA+
+2. Rattlin - Modified open-source design, ~99% PLA+
+
+Original design files: 
+Reelin- https://www.printables.com/model/409481-cat-fishing-rod-toy-unglued-remix
+Rattlin- https://www.printables.com/model/276723-flexible-snake-with-hole-for-string-cat-toy
+
+Modifications: 
+Reelin- Added logo, changed the size and scale of the line guides, created lures, used a lobster claw instead of a crabiner
+Rattlin- Added a hole in the head of the snake
+
+R&D HISTORY - Robotics Projects (2024)
+Collaborative development with Kailash (@hifinoise):
+
+Project 1: Battery-Operated Chase Ball (Rollin')
+- Multiple iterations and trials
+- Did not achieve desired functionality
+- Discontinued
+
+Project 2: Micromouse Adaptation (Rover)
+- Based on Kailash's existing micromouse work
+- Early-stage development
+- Discontinued before completion
+
+10% equity offered to Kailash for R&D work, declined
+
+OPEN SOURCE COMMITMENT
+Original sources credited, changes listed
