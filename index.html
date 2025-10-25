@@ -450,12 +450,10 @@
             }
         }
 
-        /* -- FIX: Added rule for mobile menu open state -- */
         #mobile-menu.is-open {
             transform: scaleY(1);
         }
         
-        /* -- Product Modal Styles -- */
         .thumbnail-item {
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             cursor: pointer;
@@ -464,6 +462,28 @@
         .thumbnail-item.active {
             transform: scale(1.1);
             box-shadow: 0 0 0 3px #CC8E35;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #D1D5DB; /* gray-300 */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-dot.active {
+            background-color: #7850a9; /* purple */
+        }
+
+        @media (min-width: 768px) {
+             .carousel-dot {
+                width: 12px;
+                height: 12px;
+             }
+        }
+
+        #product-carousel {
+            touch-action: pan-y;
         }
     </style>
 </head>
@@ -594,17 +614,20 @@
                         </div>
                     </div>
                     <button id="prev-btn"
-                        class="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-8 md:-translate-x-12 bg-white/80 hover:bg-white text-purple rounded-full p-2 shadow-lg z-10 transition-all">
+                        class="hidden md:block absolute top-1/2 -translate-y-1/2 left-0 -translate-x-8 md:-translate-x-12 bg-white/80 hover:bg-white text-purple rounded-full p-2 shadow-lg z-10 transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                     <button id="next-btn"
-                        class="absolute top-1/2 -translate-y-1/2 right-0 translate-x-8 md:translate-x-12 bg-white/80 hover:bg-white text-purple rounded-full p-2 shadow-lg z-10 transition-all">
+                        class="hidden md:block absolute top-1/2 -translate-y-1/2 right-0 translate-x-8 md:translate-x-12 bg-white/80 hover:bg-white text-purple rounded-full p-2 shadow-lg z-10 transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
+                    <div id="carousel-dots" class="flex justify-center space-x-2 mt-4 md:mt-6">
+                        <!-- Dots will be generated here -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -1194,7 +1217,11 @@
             const track = document.getElementById('carousel-track');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
-            if (!track || !prevBtn || !nextBtn) return;
+            const carousel = document.getElementById('product-carousel'); // For swipe
+            const dotsContainer = document.getElementById('carousel-dots'); // For dots
+
+            if (!track || !prevBtn || !nextBtn || !carousel || !dotsContainer) return;
+
             let slidesHTML = '';
             const toyKeys = Object.keys(toys);
             toyKeys.forEach(key => {
@@ -1222,27 +1249,105 @@
             const slides = track.children;
             const totalSlides = slides.length;
             function getSlidesInView() { return window.innerWidth >= 1024 ? 2 : 1; }
+            let numPages = 0;
+            function createCarouselDots() {
+                dotsContainer.innerHTML = ''; // Clear dots
+                const slidesInView = getSlidesInView();
+                numPages = totalSlides - slidesInView + 1;
+
+                if (numPages <= 1) return; // Don't show dots if only one page
+
+                for (let i = 0; i < numPages; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'carousel-dot';
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateCarousel();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+                updateCarouselDots();
+            }
+
+            function updateCarouselDots() {
+                const dots = dotsContainer.children;
+                if (dots.length === 0) return;
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].classList.toggle('active', i === currentIndex);
+                }
+            }
+
             function updateCarousel() {
                 const slidesInView = getSlidesInView();
                 const slideWidth = 100 / slidesInView;
                 track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-                nextBtn.disabled = currentIndex >= totalSlides - slidesInView;
-                prevBtn.disabled = currentIndex <= 0;
+                // nextBtn.disabled = currentIndex >= totalSlides - slidesInView;
+                // prevBtn.disabled = currentIndex <= 0;
+                updateCarouselDots();
             }
-            nextBtn.addEventListener('click', () => {
-                if (currentIndex < totalSlides - getSlidesInView()) {
+
+            function showNextSlide() {
+                const slidesInView = getSlidesInView();
+                const maxIndex = totalSlides - slidesInView;
+                if (currentIndex < maxIndex) {
                     currentIndex++;
-                    updateCarousel();
+                } else {
+                    currentIndex = 0; // Loop to start
                 }
-            });
-            prevBtn.addEventListener('click', () => {
+                updateCarousel();
+            }
+
+            function showPrevSlide() {
+                const slidesInView = getSlidesInView();
+                const maxIndex = totalSlides - slidesInView;
                 if (currentIndex > 0) {
                     currentIndex--;
-                    updateCarousel();
+                } else {
+                    currentIndex = maxIndex; // Loop to end
                 }
+                updateCarousel();
+            }
+
+            nextBtn.addEventListener('click', showNextSlide);
+            prevBtn.addEventListener('click', showPrevSlide);
+
+            // --- Swipe Logic ---
+            let touchStartX = 0;
+            let touchDeltaX = 0;
+
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchDeltaX = 0; // Reset delta
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', (e) => {
+                if (touchStartX === 0) return;
+                touchDeltaX = e.touches[0].clientX - touchStartX;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', () => {
+                const swipeThreshold = 50; // Min pixels for a swipe
+                if (Math.abs(touchDeltaX) > swipeThreshold) {
+                    if (touchDeltaX < 0) {
+                        // Swiped left
+                        showNextSlide();
+                    } else {
+                        // Swiped right
+                        showPrevSlide();
+                    }
+                }
+                touchStartX = 0; // Reset start position
             });
-            window.addEventListener('resize', updateCarousel);
-            updateCarousel();
+
+
+            window.addEventListener('resize', () => {
+                createCarouselDots(); // Recreate dots
+                updateCarousel(); // Recalculate positions
+            });
+            
+            createCarouselDots(); // Initial dot creation
+            updateCarousel(); // Initial setup
         }
 
         function showBoop(event) {
