@@ -492,6 +492,9 @@
     <nav class="bg-purple fixed top-0 left-0 right-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex justify-between items-center h-16">
+                <a href="#home" onclick="event.preventDefault(); router.goTo('home')" class="flex-shrink-0" aria-label="Ronin Toys Home">
+                    <img class="h-16 w-auto" src="images/logo_dark_nobg.svg" alt="Ronin Toys Logo">
+                </a>
                 <h1 class="text-white text-2xl cursor-pointer" onclick="router.goTo('home')">Ronin Toys</h1>
                 <div class="hidden md:flex space-x-6">
                     <a href="#home" onclick="router.goTo('home')"
