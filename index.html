@@ -485,6 +485,16 @@
         #product-carousel {
             touch-action: pan-y;
         }
+
+        .product-details ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-details ul li {
+            margin-bottom: 0.25rem;
+        }
     </style>
 </head>
 
@@ -545,7 +555,6 @@
     </nav>
 
     <div id="home" class="page">
-
         <section class="min-h-screen bg-electric-coral flex items-center relative overflow-hidden">
             <div data-cat-target="zelda-section"
                 class="cat-flipper-container absolute top-16 -left-12 sm:-left-8 md:top-1/4 md:left-20 w-56 h-56 md:w-72 md:h-72 float-dance">
@@ -629,7 +638,7 @@
                         </svg>
                     </button>
                     <div id="carousel-dots" class="flex justify-center space-x-2 mt-4 md:mt-6">
-
+                        <!-- Dots will be generated here -->
                     </div>
                 </div>
             </div>
@@ -679,7 +688,9 @@
                             <h3 class="text-2xl sm:text-3xl text-gray-800 mb-2">India FOSS</h3>
                             <p class="text-sm sm:text-base text-gray-700 font-bold mb-2">September 20-21</p>
                             <p class="text-sm sm:text-base text-gray-600 mb-6">NIMHANS, Bengaluru</p>
-                         
+                         <!--   <button
+                                class="bg-sage-green text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-green-600 transition-all transform hover:scale-105">Find
+                                us there →</button> -->
                         </div>
     
                         <div class="flex justify-center items-center my-8">
@@ -710,7 +721,9 @@
                                 <p class="text-sm sm:text-base text-gray-700 font-bold mb-2">September 20-21</p>
                                 <p class="text-sm sm:text-base text-gray-600 mb-6">NIMHANS, Bengaluru</p>
                             </div>
-                           
+                           <!--   <button
+                                class="bg-sage-green text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-green-600 transition-all transform hover:scale-105 self-start">Find
+                                us there →</button> -->
                         </div>
                         <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col">
                             <div class="flex-grow">
@@ -841,6 +854,7 @@
                                         teamwork and fun.</p>
                                     <p><strong>Research Philosophy:</strong> "If it doesn't invite participation, what's
                                         the point?"</p>
+                                    <!-- <p><strong>Current Project:</strong> <a href="#products" onclick="event.preventDefault(); router.goTo('products', {scrollTo: 'reelin'})" class="text-purple font-bold underline hover:text-emerald-700">Reelin'</a></p> -->
                                 </div>
                             </div>
                         </div>
@@ -881,6 +895,7 @@
                                         strike.</p>
                                     <p><strong>Research Philosophy:</strong> "If it doesn't please me, it has no
                                         business existing in my vicinity."</p>
+                                   <!--  <p><strong>Current Project:</strong> <a href="#products" onclick="event.preventDefault(); router.goTo('products', {scrollTo: 'rover'})" class="text-emerald-700 font-bold underline hover:text-purple">Rover</a></p> -->
                                 </div>
                             </div>
                         </div>
@@ -923,6 +938,7 @@
                                         within this state.</p>
                                     <p><strong>Research Philosophy:</strong> "Huh? Wait where was I going? OH MY GOD DID
                                         YOU SEE THAT THING JUST MOVE? I'm going to follow it."</p>
+                                   <!--  <p><strong>Current Project:</strong> <a href="#products" onclick="event.preventDefault(); router.goTo('products', {scrollTo: 'rollin'})" class="text-electric-coral font-bold underline hover:text-purple">He Forgot</a></p> -->
                                 </div>
                             </div>
                         </div>
@@ -978,7 +994,7 @@
                                 <p class="font-bold">Confirmation & Timeline:</p>
                                 <p>Please make your payment after scanning the QR code on the website.</p>
                                 <div class="my-4 flex flex-col items-center">
-                                    <img src="https://placehold.co/250x250/FFF8E7/6B7280?text=UPI+QR+Code" alt="UPI QR Code Placeholder" class="rounded-lg shadow-md w-48 h-48 sm:w-56 sm:h-56 object-cover">
+                                    <img src="images/qr_code.jpg" alt="UPI QR Code Placeholder" class="rounded-lg shadow-md w-48 h-48 sm:w-56 sm:h-56 object-cover">
                                     <p class="mt-2 text-lg font-bold text-gray-800">UPI ID: ruphilka-1@oksbi</p>
                                 </div>
                             </li>
@@ -989,6 +1005,7 @@
                             </li>
                         </ol>
 
+                        <!-- Other Sections -->
                         <div class="pt-4 space-y-4">
                             <h2 class="text-2xl sm:text-3xl text-gray-800 mb-4">Timelines</h2>
                             <ul class="list-disc pl-6 space-y-2">
@@ -1015,6 +1032,7 @@
             </div>
         </section>
     </div>
+    <!-- END NEW PAGE -->
 
 
     <div id="scroll-nav" class="fixed bottom-5 right-5 z-50 flex flex-col items-center space-y-2">
@@ -1041,6 +1059,7 @@
         </button>
     </div>
 
+    <!-- Product Image Modal -->
     <div id="product-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-[60] flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="closeProductModal()">
         <div class="bg-warm-cream rounded-2xl shadow-2xl w-full max-w-3xl relative max-h-[90vh] flex flex-col p-4 sm:p-6" onclick="event.stopPropagation()">
             <button onclick="closeProductModal()" class="absolute -top-3 -right-3 sm:top-2 sm:right-2 z-10 bg-electric-coral text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-transform hover:scale-110">
@@ -1056,6 +1075,7 @@
                 </button>
             </div>
             <div id="modal-thumbnails" class="flex-shrink-0 flex justify-center items-center gap-2 sm:gap-4 overflow-x-auto p-2">
+                <!-- Thumbnails will be generated here -->
             </div>
         </div>
     </div>
@@ -1065,6 +1085,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-center md:text-left text-sm text-gray-300">
                     <p>&copy; 2024 Ronin Toys. All rights reserved.</p>
+                    <!-- ADDED FOOTER LINK HERE -->
                     <p>
                         <a href="#terms" onclick="event.preventDefault(); router.goTo('terms')" class="underline hover:text-white transition-colors">Terms & Conditions</a>
                     </p>
@@ -1084,69 +1105,53 @@
         const toys = {
             reelin: {
                 id: 'reelin',
-                name: "Reelin",
+                name: "Reelin'",
                 price: "₹2000",
                 images: ["images/product_reelin.png"],
                 emoji: "🎣",
                 tagline: "An anthropological study in cooperative chaos",
                 thoughtProcess: "An organic fishing apparatus developed in collaboration with <a href=\"#cats\" onclick=\"event.preventDefault(); router.goTo('cats', {selectedCatId: 'gwilo-section'})\" class=\"text-purple font-bold underline hover:text-emerald-700\">Gwilo</a>. Made from bamboo that grew up wanting to be a fishing rod, paired with a line that asks for no judgement when it breaks.",
-                technical: "Designed to die after approximately 85 sessions of quality chaos. Comes with extra string and extra bait, because we believe that the good times shouldn't be limited by toys.",
+                technical: "Designed to die after approximately 85 sessions of quality chaos.",
+                purchaseIncludes: "<ul><li>1 full fishing rod (wooden dowel+ plastic ratchet spool+ plastic joint + 100% cotton undyed string + metal hook)</li><li>1 attached feather lure</li><li>Durable PLA+ plastic handle screw attachment</li></ul>",
+                accessories: "<ul><li>3 Ruffles (feathered lures)</li><li>Trigger parts for the ratchet</li><li>Extra string + 1 attached Ruffle</li></ul>",
                 bg: "bg-emerald-700",
                 hover: "hover:rotate-1"
             },
-           /* rover: {
-                id: 'rover',
-                name: "Rover",
-                price: "₹3,000",
-                emoji: "🭀",
-                tagline: "For quantum hunting experiments",
-                thoughtProcess: "<a href=\"#cats\" onclick=\"event.preventDefault(); router.goTo('cats', {selectedCatId: 'zelda-section'})\" class=\"text-emerald-700 font-bold underline hover:text-purple cursor-pointer\">Zelda</a> has… exacting standards for live prey simulation. The Rover aims to achieve the mathematical perfection of The Hunt. The Rover is a modified micro mouse engineered to Zelda's specifications... resulting in nothing less than perfection in every movement pattern.",
-                technical: null,
-                bg: "bg-emerald-700",
+            rattletail: {
+                id: 'rattletail',
+                name: "Rattletail",
+                price: "₹700 (single colour)",
+                images: ["images/product_rattlin_1.png", "images/product_rattlin_2.png"],
+                emoji: "🐍",
+                tagline: "The chase is on",
+                thoughtProcess: "A serpentine masterpiece designed to trigger every hunting instinct your cat possesses. Trail it behind you and watch your feline transform into the apex predator they've always believed themselves to be. <a href=\"#cats\" onclick=\"event.preventDefault(); router.goTo('cats', {selectedCatId: 'zelda-section'})\" class=\"text-emerald-700 font-bold underline hover:text-purple cursor-pointer\">Zelda</a> approves of its unpredictable slithering patterns.",
+                technical: "Crafted from durable, PLA+ plastic with a weighted tail section that creates realistic snake-like movement. Approximately 1 meter in length for optimal trailing distance. The joints rattle on hard surfaces like tile, and help entice even those among our feline friends who might have issues with sight.",
+                purchaseIncludes: "<ul><li>100% undyed cotton thread that helps simulate a puppet-like experience for the human (unless they run with it, then it looks like a puppet in need of an exorcism).</li></ul>",
+                accessories: "<ul><li>100% undyed cotton thread</li></ul>",
+                variants: "<ul><li>Single Colour Rattletails</li><li>Multi-colour Rattletails (priced at INR 1000) are available upon request (and according to the colours available). Do reach out to <a href='https://instagram.com/theronintoymaker' target='_blank' class='text-purple font-bold underline hover:text-emerald-700'>@theronintoymaker</a> on Instagram or email <a href='mailto:ruphilka@ronintoys.com' class='text-purple font-bold underline hover:text-emerald-700'>ruphilka@ronintoys.com</a> to know more.</li></ul>",
+                bg: "bg-electric-coral",
                 hover: "hover:-rotate-1"
             },
-            rollin: {
-                id: 'rollin',
-                name: "Rollin' Ronin",
-                price: "₹1,499",
-                emoji: "⚽",
-                tagline: "For sound-activated velocity studies",
-                thoughtProcess: "Where some minds are overwhelmed by randomness, others need it to engage. The Rollin Ronin’ is a masterless toy, that answers to no one, and yet doesn’t die in a corner by itself.",
-                technical: "How much ball, that much smart. A weighted apparatus inside the ball creates unpredictable movement patterns based on <a href=\"#cats\" onclick=\"event.preventDefault(); router.goTo('cats', {selectedCatId: 'cloud-section'})\" class=\"text-electric-coral font-bold underline hover:text-purple cursor-pointer\">Cloud's</a> research into chaos, and a beeper lets you know when the toy is out of charge, or stuck in a corner, making retrieval easy (for the humans ofc).",
+            ruffles: {
+                id: 'ruffles',
+                name: "Ruffles",
+                price: "₹450/pack",
+                images: [],
+                emoji: "🪶",
+                tagline: "For when the hunt demands proper bait.",
+                thoughtProcess: "Developed as part of Project Reelin' (in collaboration with <a href=\"#cats\" onclick=\"event.preventDefault(); router.goTo('cats', {selectedCatId: 'gwilo-section'})\" class=\"text-purple font-bold underline hover:text-emerald-700\">Gwilo</a>, our Senior Research Fellow in Applied Mischief), Ruffles are the interchangeable feather lures that bring the Reelin' to life. Each Ruffle is crafted for the perfect arc, flutter, and unpredictable spin - everything a discerning feline hunter could want. The idea was simple: create lures that mimic flight, provoke instinct, and reward every successful pounce with just enough resistance to keep things interesting.",
+                technical: "Made with real feathers. Durable but light enough for that perfect flutter. Heat-shrinking fastening tape for secure durability. Metal fittings: hooks for single-feather Ruffles, female spade connectors for doubles. Ready to attach to your Reelin' fishing rod (cotton string + metal hook system).<br><b>Bonus feature:</b> Double-feather Ruffles also double as emergency shuttlecocks (for humans who forget who's boss).",
+                purchaseIncludes: "<ul><li>2 x Single Feather Ruffles</li><li>2x Double Feather Ruffles</li></ul>",
+                accessories: null,
+                variants: "<ul><li>Single Feather Ruffle - light, aerodynamic, and built for precision attacks. Ideal for cats who believe stealth is superior to speed.</li><li>Double Feather Ruffle - flamboyant, flappy, and dramatic. Built for cats who like their chaos extra.</li></ul>",
                 bg: "bg-sage-green",
                 hover: "hover:rotate-1"
-            },
-            chatter: {
-                id: 'chatter',
-                name: "ChatterBox",
-                price: "₹3500",
-                emoji: "🗣️",
-                tagline: "For interspecies dialogue research",
-                thoughtProcess: "Record buttons for actual conversations... Based on groundbreaking research from Bunny the Talking Dog. Revolutionary communication technology.",
-                technical: "What if you and your animal overlord could actually talk to each other? Well, now it’s possible. Without an import tax. You get 3 programmable buttons, a placemat, and extra switches (yes the button is modular) for whenever you need to swap them out!",
-                bg: "bg-gray-700",
-                hover: "hover:-rotate-1"
-            } */
-
-        rattletail: {
-            id: 'rattletail',
-            name: "Rattletail",
-            price: "₹700",
-            images: ["images/product_rattlin_1.png", "images/product_rattlin_2.png"],
-            emoji: "🐍",
-            tagline: "The chase is on",
-            thoughtProcess: "A serpentine masterpiece designed to trigger every hunting instinct your cat possesses. Trail it behind you and watch your feline transform into the apex predator they've always believed themselves to be. <a href=\"#cats\" onclick=\"event.preventDefault(); router.goTo('cats', {selectedCatId: 'zelda-section'})\" class=\"text-emerald-700 font-bold underline hover:text-purple cursor-pointer\">Zelda</a> approves of its unpredictable slithering patterns.",
-            technical: "Crafted from durable, cat-safe materials with a weighted tail section that creates realistic snake-like movement. Features an ergonomic handle and replaceable rattling beads that create enticing sounds during the chase. Approximately 1 meter in length for optimal trailing distance.",
-            bg: "bg-electric-coral",
-            hover: "hover:-rotate-1"
-        }
-
+            }
         };
 
         let latinInterval;
         
         const router = {
-            // UPDATED VALID PAGES ARRAY
             validPages: ['home', 'products', 'about', 'cats', 'terms'],
 
             goTo: function (pageId, params = {}) {
@@ -1163,9 +1168,7 @@
                 targetPage.classList.add('active');
                 window.location.hash = pageId;
 
-                // Handle scrolling to specific sections
                 if (pageId === 'products' && params.scrollTo) {
-                    // Timeout allows the page to become visible before scrolling
                     setTimeout(() => {
                         const targetElement = document.getElementById(params.scrollTo);
                         if (targetElement) {
@@ -1224,7 +1227,7 @@
                         <div class="${toy.bg} rounded-2xl w-32 h-32 md:w-48 md:h-48 flex-shrink-0 overflow-hidden ${hasImages ? 'cursor-pointer transition-transform hover:scale-105' : ''}" ${hasImages ? `onclick="openProductModal('${key}')"` : ''}>
                             ${mainImage ? `<img src="${mainImage}" alt="${toy.name}" class="w-full h-full object-contain">` : (toy.emoji ? `<div class="flex items-center justify-center w-full h-full text-white text-6xl md:text-8xl">${toy.emoji}</div>` : '')}
                         </div>
-                        <div class="text-center md:text-left flex-1">
+                        <div class="text-center md:text-left flex-1 product-details">
                             <h2 class="text-3xl sm:text-4xl text-gray-800 mb-2">${toy.name}</h2>
                             <p class="text-md sm:text-lg text-gray-600 font-bold mb-4 font-subtitle">${toy.tagline}</p>
                             <div class="text-3xl sm:text-4xl text-electric-coral mb-6">${toy.price}</div>
@@ -1233,8 +1236,23 @@
                             <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">${toy.thoughtProcess}</p>
                             
                             ${toy.technical ? `
-                                <h3 class="text-xl font-bold text-gray-800 mb-2 mt-6">${(toy.id === 'rollin' || toy.id === 'chatter') ? 'Technical Innovation' : 'Technical Specifications'}</h3>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 mt-6">Technical Specifications</h3>
                                 <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">${toy.technical}</p>
+                            ` : ''}
+
+                            ${toy.purchaseIncludes ? `
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 mt-6">Each Purchase Includes:</h3>
+                                <div class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">${toy.purchaseIncludes}</div>
+                            ` : ''}
+
+                            ${toy.accessories ? `
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 mt-6">Extra parts and accessories:</h3>
+                                <div class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">${toy.accessories}</div>
+                            ` : ''}
+
+                            ${toy.variants ? `
+                                <h3 class="text-xl font-bold text-gray-800 mb-2 mt-6">Variants:</h3>
+                                <div class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">${toy.variants}</div>
                             ` : ''}
                         </div>
                     </div>
@@ -1717,3 +1735,4 @@
 </body>
 
 </html>
+
