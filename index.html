@@ -245,7 +245,7 @@
             transform: scale(1.02);
         }
 
-        /* --- Scientific Approach Styles --- */
+        
         .connector-path {
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
@@ -259,7 +259,7 @@
             }
         }
 
-        /* --- Mobile / Tablet simple view styles --- */
+        
         .step-simple-item {
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             opacity: 0;
@@ -297,7 +297,7 @@
 
         @media (min-width: 640px) {
 
-            /* sm */
+            
             #scientific-approach-mobile-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -332,7 +332,7 @@
 
         @media (min-width: 768px) {
 
-            /* md */
+            
             #scientific-approach-mobile-grid {
                 grid-template-columns: repeat(3, 1fr);
                 grid-template-rows: repeat(2, auto);
@@ -364,7 +364,7 @@
             }
         }
 
-        /* --- Desktop card view styles --- */
+        
         #scientific-approach-desktop-grid.is-visible .step-card {
             opacity: 1;
             transform: translateY(0);
@@ -403,7 +403,7 @@
 
         @media (min-width: 1024px) {
 
-            /* lg */
+            
             #scientific-approach-desktop-grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -438,7 +438,7 @@
 
         @media (min-width: 1080px) {
 
-            /* desktop */
+            
             #scientific-approach-desktop-grid {
                 grid-template-columns: repeat(6, 1fr);
                 grid-template-rows: 1fr;
@@ -467,12 +467,12 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: #D1D5DB; /* gray-300 */
+            background-color: #D1D5DB; 
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         .carousel-dot.active {
-            background-color: #7850a9; /* purple */
+            background-color: #7850a9; 
         }
 
         @media (min-width: 768px) {
@@ -499,6 +499,7 @@
 </head>
 
 <body class="bg-warm-cream text-gray-800 pt-16">
+    
     <nav class="bg-purple fixed top-0 left-0 right-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex justify-between items-center h-16">
@@ -554,7 +555,9 @@
         </div>
     </nav>
 
+    
     <div id="home" class="page">
+        
         <section class="min-h-screen bg-electric-coral flex items-center relative overflow-hidden">
             <div data-cat-target="zelda-section"
                 class="cat-flipper-container absolute top-16 -left-12 sm:-left-8 md:top-1/4 md:left-20 w-56 h-56 md:w-72 md:h-72 float-dance">
@@ -612,6 +615,7 @@
             </div>
         </section>
 
+        
         <section class="bg-warm-cream py-16 sm:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <div class="text-center mb-12 sm:mb-16">
@@ -620,29 +624,38 @@
                     <p class="text-lg sm:text-xl text-gray-600 font-medium font-subtitle">Designed by cats, for cats
                         (and their humans)</p>
                 </div>
+                
                 <div class="max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl mx-auto relative">
+                    
                     <div id="product-carousel" class="overflow-hidden">
+                        
                         <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                            
                         </div>
                     </div>
+                    
                     <button id="prev-btn"
                         class="hidden md:block absolute top-1/2 -translate-y-1/2 left-0 -translate-x-8 md:-translate-x-12 bg-white/80 hover:bg-white text-purple rounded-full p-2 shadow-lg z-10 transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
+                    
                     <button id="next-btn"
                         class="hidden md:block absolute top-1/2 -translate-y-1/2 right-0 translate-x-8 md:translate-x-12 bg-white/80 hover:bg-white text-purple rounded-full p-2 shadow-lg z-10 transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
+                    
                     <div id="carousel-dots" class="flex justify-center space-x-2 mt-4 md:mt-6">
+                        
                     </div>
                 </div>
             </div>
         </section>
 
+        
         <section id="scientific-approach-section" class="bg-bluey-orange py-16 sm:py-20 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <div class="text-center mb-12 sm:mb-16">
@@ -651,23 +664,28 @@
                         chaos</p>
                 </div>
 
+                
                 <div id="scientific-approach-mobile" class="lg:hidden relative">
                     <svg id="connector-svg-mobile" class="absolute top-0 left-0 w-full h-full hidden sm:block"
                         style="z-index: 0; pointer-events: none;"></svg>
                     <div id="scientific-approach-mobile-grid"
                         class="flex flex-col items-center max-w-sm mx-auto sm:max-w-none">
+                        
                         </div>
                 </div>
 
+                
                 <div id="scientific-approach-desktop" class="hidden lg:block relative">
                     <svg id="connector-svg-desktop" class="absolute top-0 left-0 w-full h-full"
                         style="z-index: 0; pointer-events: none;"></svg>
                     <div id="scientific-approach-desktop-grid">
+                        
                         </div>
                 </div>
             </div>
         </section>
 
+        
         <section class="bg-bluey-blue py-16 sm:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <div class="hidden md:flex justify-between items-baseline mb-8">
@@ -677,6 +695,7 @@
                 </div>
     
                 <div>
+                    
                     <div class="md:hidden">
                         <h2 class="text-center text-4xl sm:text-5xl text-white mb-6">Catch us in the wild</h2>
                         <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg text-left mb-8">
@@ -687,9 +706,7 @@
                             <h3 class="text-2xl sm:text-3xl text-gray-800 mb-2">India FOSS</h3>
                             <p class="text-sm sm:text-base text-gray-700 font-bold mb-2">September 20-21</p>
                             <p class="text-sm sm:text-base text-gray-600 mb-6">NIMHANS, Bengaluru</p>
-                         <!--   <button
-                                class="bg-sage-green text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-green-600 transition-all transform hover:scale-105">Find
-                                us there →</button> -->
+                         
                         </div>
     
                         <div class="flex justify-center items-center my-8">
@@ -709,6 +726,7 @@
                         </div>
                     </div>
     
+                    
                     <div class="hidden md:grid grid-cols-2 gap-8 items-stretch">
                         <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg text-left flex flex-col">
                             <div class="flex-grow">
@@ -720,9 +738,7 @@
                                 <p class="text-sm sm:text-base text-gray-700 font-bold mb-2">September 20-21</p>
                                 <p class="text-sm sm:text-base text-gray-600 mb-6">NIMHANS, Bengaluru</p>
                             </div>
-                           <!--   <button
-                                class="bg-sage-green text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:bg-green-600 transition-all transform hover:scale-105 self-start">Find
-                                us there →</button> -->
+                           
                         </div>
                         <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col">
                             <div class="flex-grow">
@@ -741,6 +757,7 @@
 
     </div>
 
+    
     <div id="products" class="page">
         <section class="min-h-screen bg-warm-cream py-16 sm:py-20">
             <div class="max-w-5xl mx-auto px-4 sm:px-6">
@@ -749,11 +766,13 @@
                     <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-medium font-subtitle">Toys for
                         discerning connoisseurs of chaos</p>
                 </div>
+                
                 <div id="product-list" class="space-y-12"></div>
             </div>
         </section>
     </div>
 
+    
     <div id="about" class="page">
         <section class="min-h-screen bg-sage-green py-16 sm:py-20">
             <div class="max-w-4xl mx-auto px-4 sm:px-6">
@@ -821,6 +840,7 @@
         </section>
     </div>
 
+    
     <div id="cats" class="page">
         <section class="min-h-screen bg-warm-cream py-16 sm:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -865,7 +885,7 @@
                                         teamwork and fun.</p>
                                     <p><strong>Research Philosophy:</strong> "If it doesn't invite participation, what's
                                         the point?"</p>
-                                    <!-- <p><strong>Current Project:</strong> <a href="#products" onclick="event.preventDefault(); router.goTo('products', {scrollTo: 'reelin'})" class="text-purple font-bold underline hover:text-emerald-700">Reelin'</a></p> -->
+                                    
                                 </div>
                             </div>
                         </div>
@@ -906,7 +926,7 @@
                                         strike.</p>
                                     <p><strong>Research Philosophy:</strong> "If it doesn't please me, it has no
                                         business existing in my vicinity."</p>
-                                   <!--  <p><strong>Current Project:</strong> <a href="#products" onclick="event.preventDefault(); router.goTo('products', {scrollTo: 'rover'})" class="text-emerald-700 font-bold underline hover:text-purple">Rover</a></p> -->
+                                   
                                 </div>
                             </div>
                         </div>
@@ -949,7 +969,7 @@
                                         within this state.</p>
                                     <p><strong>Research Philosophy:</strong> "Huh? Wait where was I going? OH MY GOD DID
                                         YOU SEE THAT THING JUST MOVE? I'm going to follow it."</p>
-                                   <!--  <p><strong>Current Project:</strong> <a href="#products" onclick="event.preventDefault(); router.goTo('products', {scrollTo: 'rollin'})" class="text-electric-coral font-bold underline hover:text-purple">He Forgot</a></p> -->
+                                   
                                 </div>
                             </div>
                         </div>
@@ -967,6 +987,7 @@
         </section>
     </div>
 
+    
     <div id="terms" class="page">
         <section class="min-h-screen bg-sage-green py-16 sm:py-20">
             <div class="max-w-4xl mx-auto px-4 sm:px-6">
@@ -1016,6 +1037,7 @@
                             </li>
                         </ol>
 
+                        
                         <div class="pt-4 space-y-4">
                             <h2 class="text-2xl sm:text-3xl text-gray-800 mb-4">Timelines</h2>
                             <ul class="list-disc pl-6 space-y-2">
@@ -1042,6 +1064,10 @@
             </div>
         </section>
     </div>
+    
+
+
+    
     <div id="scroll-nav" class="fixed bottom-5 right-5 z-50 flex flex-col items-center space-y-2">
         <button id="scroll-up-btn" onclick="scrollToTop()"
             class="hidden bg-purple text-white w-12 h-12 rounded-full shadow-lg hover:bg-purple-700 focus:outline-none transform hover:scale-110 transition-transform border-2 border-white">
@@ -1066,6 +1092,7 @@
         </button>
     </div>
 
+    
     <div id="product-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-[60] flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="closeProductModal()">
         <div class="bg-warm-cream rounded-2xl shadow-2xl w-full max-w-3xl relative max-h-[90vh] flex flex-col p-4 sm:p-6" onclick="event.stopPropagation()">
             <button onclick="closeProductModal()" class="absolute -top-3 -right-3 sm:top-2 sm:right-2 z-10 bg-electric-coral text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition-transform hover:scale-110">
@@ -1081,15 +1108,18 @@
                 </button>
             </div>
             <div id="modal-thumbnails" class="flex-shrink-0 flex justify-center items-center gap-2 sm:gap-4 overflow-x-auto p-2">
+                
             </div>
         </div>
     </div>
 
+    
     <footer class="bg-purple text-white py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-center md:text-left text-sm text-gray-300">
                     <p>&copy; 2024 Ronin Toys. All rights reserved.</p>
+                    
                     <p>
                         <a href="#terms" onclick="event.preventDefault(); router.goTo('terms')" class="underline hover:text-white transition-colors">Terms & Conditions</a>
                     </p>
@@ -1106,7 +1136,9 @@
         </div>
     </footer>
 
+    
     <script>
+        
         const toys = {
             reelin: {
                 id: 'reelin',
@@ -1154,7 +1186,9 @@
             }
         };
 
+        
         let latinInterval;
+        
         
         const router = {
             validPages: ['home', 'products', 'about', 'cats', 'terms'],
@@ -1174,7 +1208,7 @@
                 window.location.hash = pageId;
 
                 if (pageId === 'products' && params.scrollTo) {
-                    // Scroll to a specific product on the products page
+                    
                     setTimeout(() => {
                         const targetElement = document.getElementById(params.scrollTo);
                         if (targetElement) {
@@ -1184,10 +1218,10 @@
                         }
                     }, 50);
                 } else if (pageId === 'cats') {
-                    // Handle navigation to the cats page
+                    
                     initLatinTransition();
                     if (params.selectedCatId) {
-                        // Scroll to a specific cat
+                        
                         setTimeout(() => {
                             const targetSection = document.getElementById(params.selectedCatId);
                             if (targetSection) {
@@ -1202,10 +1236,10 @@
                         window.scrollTo(0, 0);
                     }
                 } else {
-                    // Handle navigation to all other pages
+                    
                     window.scrollTo(0, 0);
                     if (latinInterval) { clearInterval(latinInterval); latinInterval = null; }
-                    // Reset cat flippers when leaving the cats page
+                    
                     document.querySelectorAll('#cats .cat-flipper-container').forEach(flipper => {
                         flipper.classList.remove('is-flipped');
                     });
@@ -1213,7 +1247,7 @@
             },
 
             init: function () {
-                // Initialize router on page load
+                
                 const hash = window.location.hash.substring(1);
                 const initialPage = this.validPages.includes(hash) ? hash : 'home';
                 this.goTo(initialPage);
@@ -1221,14 +1255,14 @@
         };
 
         window.addEventListener('hashchange', function () {
-            // Handle browser back/forward navigation
+            
             const hash = window.location.hash.substring(1);
             router.goTo(hash);
         });
 
-        // --- PAGE POPULATION ---
+        
         function populateProductsPage() {
-            // Dynamically create the product listings on the 'products' page
+            
             const container = document.getElementById('product-list');
             if (!container) return;
             let content = '';
@@ -1276,7 +1310,7 @@
         }
 
         function initLatinTransition() {
-            // Handle the fading Latin-to-English text on the 'cats' page
+            
             const latinElement = document.getElementById('latin-subtitle');
             if (!latinElement || latinInterval) return;
             const phrases = ["Humani intelligentes sunt, sed assidua vigilantia indigent", "Humans are intelligent, but require constant supervision"];
@@ -1292,7 +1326,7 @@
             latinInterval = setInterval(switchText, 6000);
         }
 
-        // --- MOBILE NAV ---
+        
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('is-open');
         }
@@ -1300,7 +1334,7 @@
             document.getElementById('mobile-menu').classList.remove('is-open');
         }
 
-        // --- SCROLL BUTTONS ---
+        
         const scrollUpBtn = document.getElementById('scroll-up-btn');
         const scrollDownBtn = document.getElementById('scroll-down-btn');
         const scrollBottomBtn = document.getElementById('scroll-bottom-btn');
@@ -1310,7 +1344,7 @@
         function scrollPageDown() { window.scrollBy({ top: window.innerHeight * 0.9, behavior: 'smooth' }); }
 
         function handleScrollButtons() {
-            // Show/hide floating scroll buttons based on scroll position
+            
             const scrollPosition = window.scrollY;
             const windowHeight = window.innerHeight;
             const bodyHeight = document.body.offsetHeight;
@@ -1322,19 +1356,19 @@
 
         window.addEventListener('scroll', handleScrollButtons);
 
-        // --- PRODUCT CAROUSEL ---
+        
         function setupCarousel() {
             const track = document.getElementById('carousel-track');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
-            const carousel = document.getElementById('product-carousel'); // For swipe
-            const dotsContainer = document.getElementById('carousel-dots'); // For dots
+            const carousel = document.getElementById('product-carousel'); 
+            const dotsContainer = document.getElementById('carousel-dots'); 
 
             if (!track || !prevBtn || !nextBtn || !carousel || !dotsContainer) return;
 
-            let autoScrollInterval = null; // <-- Store the interval ID
+            let autoScrollInterval = null; 
 
-            // Populate carousel track
+            
             let slidesHTML = '';
             const toyKeys = Object.keys(toys);
             toyKeys.forEach(key => {
@@ -1365,30 +1399,32 @@
             function getSlidesInView() { return window.innerWidth >= 1024 ? 2 : 1; }
             let numPages = 0;
 
+            
             function startAutoScroll() {
                 if (autoScrollInterval) {
                     clearInterval(autoScrollInterval);
                 }
                 autoScrollInterval = setInterval(() => {
-                    // Only scroll if the tab is active
+                    
                     if (document.hasFocus()) {
                         showNextSlide();
                     }
-                }, 9);
+                }, 12000); 
             }
 
             function resetAutoScroll() {
                 clearInterval(autoScrollInterval);
                 startAutoScroll();
             }
+            
 
 
             function createCarouselDots() {
-                dotsContainer.innerHTML = ''; // Clear dots
+                dotsContainer.innerHTML = ''; 
                 const slidesInView = getSlidesInView();
                 numPages = totalSlides - slidesInView + 1;
 
-                if (numPages <= 1) return; // Don't show dots if only one page
+                if (numPages <= 1) return; 
 
                 for (let i = 0; i < numPages; i++) {
                     const dot = document.createElement('button');
@@ -1397,7 +1433,7 @@
                     dot.addEventListener('click', () => {
                         currentIndex = i;
                         updateCarousel();
-                        resetAutoScroll(); // <-- Reset timer on dot click
+                        resetAutoScroll(); 
                     });
                     dotsContainer.appendChild(dot);
                 }
@@ -1425,7 +1461,7 @@
                 if (currentIndex < maxIndex) {
                     currentIndex++;
                 } else {
-                    currentIndex = 0; // Loop to start
+                    currentIndex = 0; 
                 }
                 updateCarousel();
             }
@@ -1436,27 +1472,28 @@
                 if (currentIndex > 0) {
                     currentIndex--;
                 } else {
-                    currentIndex = maxIndex; // Loop to end
+                    currentIndex = maxIndex; 
                 }
                 updateCarousel();
             }
 
             nextBtn.addEventListener('click', () => {
                 showNextSlide();
-                resetAutoScroll(); // <-- Reset timer on arrow click
+                resetAutoScroll(); 
             });
             prevBtn.addEventListener('click', () => {
                 showPrevSlide();
-                resetAutoScroll(); // <-- Reset timer on arrow click
+                resetAutoScroll(); 
             });
 
-            // --- Swipe Logic ---
+            
             let touchStartX = 0;
             let touchDeltaX = 0;
 
             carousel.addEventListener('touchstart', (e) => {
+                clearInterval(autoScrollInterval); 
                 touchStartX = e.touches[0].clientX;
-                touchDeltaX = 0; // Reset delta
+                touchDeltaX = 0; 
             }, { passive: true });
 
             carousel.addEventListener('touchmove', (e) => {
@@ -1465,34 +1502,34 @@
             }, { passive: true });
 
             carousel.addEventListener('touchend', () => {
-                const swipeThreshold = 50; // Min pixels for a swipe
+                const swipeThreshold = 50; 
                 if (Math.abs(touchDeltaX) > swipeThreshold) {
                     if (touchDeltaX < 0) {
-                        // Swiped left
+                        
                         showNextSlide();
                     } else {
-                        // Swiped right
+                        
                         showPrevSlide();
                     }
-                    resetAutoScroll(); // <-- Reset timer on swipe
                 }
-                touchStartX = 0; // Reset start position
+                touchStartX = 0; 
+                resetAutoScroll(); 
             });
 
 
             window.addEventListener('resize', () => {
-                createCarouselDots();
-                updateCarousel();
+                createCarouselDots(); 
+                updateCarousel(); 
             });
             
-            createCarouselDots();
-            updateCarousel();
-            startAutoScroll();
+            createCarouselDots(); 
+            updateCarousel(); 
+            startAutoScroll(); 
         }
 
-        // --- CAT INTERACTION ---
+        
         function showBoop(event) {
-            // Show a "Boop!" animation on cat click
+            
             const container = event.target.closest('.cat-flipper-container');
             if (!container || container.querySelector('.boop-text')) return;
             const boopElement = document.createElement('span');
@@ -1507,14 +1544,14 @@
         }
 
         function handleCatInteraction() {
-            // Handle clicking on the flipping cat images
+            
             const catContainers = document.querySelectorAll('.cat-flipper-container');
             catContainers.forEach(container => {
                 container.addEventListener('click', (event) => {
                     event.stopPropagation();
 
                     if (container.closest('#home')) {
-                        // On the home page, first click flips, second click navigates
+                        
                         if (container.classList.contains('is-flipped')) {
                             const catTargetId = container.dataset.catTarget;
                             router.goTo('cats', { selectedCatId: catTargetId });
@@ -1528,16 +1565,16 @@
                             if (boopTarget) showBoop({ target: boopTarget });
                         }
                     } else if (container.closest('#cats')) {
-                        // On the cats page, clicking just flips the card
+                        
                         container.classList.toggle('is-flipped');
                     }
                 });
             });
         }
 
-        // --- SCIENTIFIC APPROACH SECTION ---
+        
         function setupScientificApproach() {
-            // Dynamically populate the "Scientific Approach" steps
+            
             const steps = [
                 { "step": "1", "icon": "science", "color": "text-electric-coral", "title": "Observe", "text": "Take notes when cats play properly." },
                 { "step": "2", "icon": "lightbulb", "color": "text-warm-ochre", "title": "Hypothesize", "text": "Ask 'Ok what if this BUT MORE?'" },
@@ -1555,7 +1592,7 @@
             let desktopHTML = '';
 
             steps.forEach((s, index) => {
-                // HTML for mobile/tablet simple list view
+                
                 mobileHTML += `
                     <div data-step="${s.step}" class="step-simple-item flex items-center w-full space-x-4">
                         <div class="w-16 h-16 bg-white rounded-2xl flex-shrink-0 flex items-center justify-center">
@@ -1568,7 +1605,7 @@
                     </div>
                     ${index < steps.length - 1 ? '<div class="h-12 w-16 flex justify-center sm:hidden"><span class="material-symbols-outlined text-white text-4xl">south</span></div>' : ''}`;
 
-                // HTML for desktop card view
+                
                 desktopHTML += `
                     <div data-step="${s.step}" class="step-card bg-white rounded-3xl p-6 shadow-lg text-center">
                         <div class="w-16 h-16 mx-auto mb-4 bg-${s.color.replace('text-', '')} rounded-2xl flex items-center justify-center">
@@ -1585,7 +1622,7 @@
             const section = document.getElementById('scientific-approach-section');
             if (!section) return;
 
-            // Function to draw SVG connectors between steps
+            
             const drawConnectors = (containerId, gridId, svgId) => {
                 const container = document.getElementById(containerId);
                 const grid = document.getElementById(gridId);
@@ -1597,10 +1634,10 @@
                     return;
                 }
 
-                svg.innerHTML = ''; // Clear previous connectors
+                svg.innerHTML = ''; 
                 const containerRect = container.getBoundingClientRect();
 
-                // Create SVG marker for arrowhead
+                
                 const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
                 marker.setAttribute('id', `arrowhead-${containerId}`);
                 marker.setAttribute('viewBox', '-0 -5 10 10'); marker.setAttribute('refX', 5);
@@ -1618,7 +1655,7 @@
                 defs.appendChild(marker);
                 svg.appendChild(defs);
 
-                // Draw a path between each step
+                
                 for (let i = 0; i < steps.length - 1; i++) {
                     const startNode = steps[i];
                     const endNode = steps[i + 1];
@@ -1631,13 +1668,13 @@
                     let pathData;
                     const curve = 50;
 
-                    // Handle different layouts (horizontal vs. vertical connections)
-                    if (Math.abs(start.y - end.y) < 20) { // Horizontal
+                    
+                    if (Math.abs(start.y - end.y) < 20) { 
                         const fromRight = start.x < end.x;
                         const p1 = fromRight ? start.x + startRect.width / 2 : start.x - startRect.width / 2;
                         const p2 = fromRight ? end.x - endRect.width / 2 : end.x + endRect.width / 2;
                         pathData = `M ${p1} ${start.y} C ${p1 + (fromRight ? curve : -curve)} ${start.y}, ${p2 + (fromRight ? -curve : curve)} ${end.y}, ${p2} ${end.y}`;
-                    } else { // Vertical
+                    } else { 
                         const fromTop = start.y < end.y;
                         const p1 = fromTop ? start.y + startRect.height / 2 : start.y - startRect.height / 2;
                         const p2 = fromTop ? end.y - endRect.height / 2 : end.y + endRect.height / 2;
@@ -1662,10 +1699,10 @@
                 }
             };
 
-            // Function to decide which connector layout to draw
+            
             const runDraw = () => {
                 if (window.innerWidth < 640) {
-                    document.getElementById('connector-svg-mobile').innerHTML = ''; // no svg on smallest mobile
+                    document.getElementById('connector-svg-mobile').innerHTML = ''; 
                 } else if (window.innerWidth < 1024) {
                     drawConnectors('scientific-approach-mobile', 'scientific-approach-mobile-grid', 'connector-svg-mobile');
                 } else {
@@ -1673,7 +1710,7 @@
                 }
             }
 
-            // Use IntersectionObserver to trigger animations when section is visible
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1681,7 +1718,7 @@
                         const desktopGrid = document.getElementById('scientific-approach-desktop-grid');
                         mobileGrid.classList.add('is-visible');
                         desktopGrid.classList.add('is-visible');
-                        setTimeout(runDraw, 100); // Draw connectors after items are visible
+                        setTimeout(runDraw, 100); 
                         observer.unobserve(entry.target);
                     }
                 });
@@ -1689,7 +1726,7 @@
 
             observer.observe(section);
 
-            // Redraw connectors on window resize
+            
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
@@ -1697,6 +1734,7 @@
             });
         }
 
+        
         let currentModalProductId = null;
         let currentModalImageIndex = 0;
         const modal = document.getElementById('product-modal');
@@ -1706,37 +1744,39 @@
         const modalNextBtn = document.getElementById('modal-next-btn');
 
         function showModalImage(index) {
+            
             const product = toys[currentModalProductId];
             if (!product || !product.images || !product.images[index]) return;
 
             currentModalImageIndex = index;
             modalMainImage.src = product.images[index];
 
-            // Update active state on thumbnails
+            
             const thumbnails = modalThumbnailsContainer.querySelectorAll('.thumbnail-item');
             thumbnails.forEach((thumb, i) => {
                 thumb.classList.toggle('active', i === index);
             });
 
-            // Enable/disable modal nav buttons
+            
             modalPrevBtn.disabled = index === 0;
             modalNextBtn.disabled = index === product.images.length - 1;
         }
 
         function openProductModal(productId) {
-            // Open the modal for a specific product
+            
             const product = toys[productId];
             if (!product || !product.images || product.images.length === 0) return;
 
             currentModalProductId = productId;
             
-            // Populate thumbnails
+            
             modalThumbnailsContainer.innerHTML = product.images.map((imgSrc, index) => `
                 <img src="${imgSrc}" alt="Thumbnail ${index + 1}" class="thumbnail-item w-16 h-16 sm:w-20 sm:h-20 object-contain bg-white rounded-lg p-1 border-2 border-transparent" onclick="showModalImage(${index})">
             `).join('');
             
-            showModalImage(0); // Show the first image
+            showModalImage(0); 
 
+            
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
@@ -1746,6 +1786,7 @@
         }
 
         function closeProductModal() {
+            
             modal.classList.add('opacity-0');
             setTimeout(() => {
                 modal.classList.add('hidden');
@@ -1754,6 +1795,7 @@
         }
 
         function handleModalKeydown(event) {
+            
             if (event.key === 'Escape') {
                 closeProductModal();
             } else if (event.key === 'ArrowLeft') {
@@ -1777,7 +1819,7 @@
         });
 
 
-        // --- INITIALIZATION ---
+        
         document.addEventListener('DOMContentLoaded', () => {
             router.init();
             populateProductsPage();
@@ -1785,9 +1827,11 @@
             setupCarousel();
             handleCatInteraction();
             setupScientificApproach();
+            
         });
 
     </script>
 </body>
 
 </html>
+
