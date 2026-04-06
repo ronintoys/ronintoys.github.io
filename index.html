@@ -513,6 +513,88 @@
         .product-details ul li {
             margin-bottom: 0.25rem;
         }
+
+        .collection-toggle {
+            position: relative;
+            display: inline-flex;
+            background: #E0D9CF;
+            border-radius: 9999px;
+            padding: 5px;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .toggle-pill {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            bottom: 5px;
+            width: calc(50% - 5px);
+            border-radius: 9999px;
+            background: #7850a9;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s ease;
+            pointer-events: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+        }
+
+        .toggle-pill.is-calm {
+            transform: translateX(100%);
+            background: #87A96B;
+        }
+
+        .toggle-btn {
+            position: relative;
+            z-index: 1;
+            padding: 0.7rem 1.1rem;
+            font-family: 'Chelsea Market', cursive;
+            font-size: 0.9rem;
+            color: #9CA3AF;
+            transition: color 0.25s ease;
+            border-radius: 9999px;
+            white-space: nowrap;
+            min-width: 120px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            letter-spacing: 0.01em;
+        }
+
+        .toggle-btn.active {
+            color: white;
+        }
+
+        @media (min-width: 400px) {
+            .toggle-btn {
+                font-size: 1rem;
+                padding: 0.75rem 1.4rem;
+                min-width: 140px;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .toggle-btn {
+                font-size: 1.15rem;
+                padding: 0.875rem 2rem;
+                min-width: 165px;
+            }
+        }
+
+        #products-heading, #products-subheading, #product-list {
+            transition: opacity 0.18s ease;
+        }
+
+        .collection-is-switching #products-heading,
+        .collection-is-switching #products-subheading,
+        .collection-is-switching #product-list {
+            opacity: 0;
+        }
+
+        #products-section {
+            transition: background-color 0.5s ease;
+        }
+
+        #products-section.is-calm-bg {
+            background-color: #F0F4ED;
+        }
     </style>
 </head>
 
@@ -789,14 +871,32 @@
 
     
     <div id="products" class="page">
-        <section class="min-h-screen bg-warm-cream py-16 sm:py-20">
+        <section id="products-section" class="min-h-screen bg-warm-cream py-16 sm:py-20">
             <div class="max-w-5xl mx-auto px-4 sm:px-6">
                 <div class="text-center mb-12 sm:mb-16">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl text-gray-800 mb-8">The Chaos Collection</h1>
-                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-medium font-subtitle">Toys for
-                        discerning connoisseurs of chaos</p>
+
+                    <div class="flex justify-center mb-8">
+                        <div class="collection-toggle" id="collection-toggle" role="group" aria-label="Select collection">
+                            <div class="toggle-pill" id="toggle-pill" aria-hidden="true"></div>
+                            <button class="toggle-btn active" id="chaos-toggle-btn"
+                                onclick="switchCollection('chaos')"
+                                aria-pressed="true"
+                                aria-label="Chaos Collection">
+                                ⚡ Chaos
+                            </button>
+                            <button class="toggle-btn" id="calm-toggle-btn"
+                                onclick="switchCollection('calm')"
+                                aria-pressed="false"
+                                aria-label="Calm Collection">
+                                ☁️ Calm
+                            </button>
+                        </div>
+                    </div>
+
+                    <h1 id="products-heading" class="text-4xl sm:text-5xl md:text-6xl text-gray-800 mb-4">The Chaos Collection</h1>
+                    <p id="products-subheading" class="text-lg sm:text-xl md:text-2xl text-gray-600 font-medium font-subtitle">Toys for discerning connoisseurs of chaos</p>
                 </div>
-                
+
                 <div id="product-list" class="space-y-12"></div>
             </div>
         </section>
@@ -1172,6 +1272,7 @@
         const toys = {
             reelin: {
                 id: 'reelin',
+                collection: 'chaos',
                 name: "Reelin'",
                 price: "₹2500",
                 images: ["images/product_reelin.png"],
@@ -1186,6 +1287,7 @@
             },
             rattletail: {
                 id: 'rattletail',
+                collection: 'chaos',
                 name: "Rattletail",
                 price: "₹750 (single colour)",
                 images: ["images/product_rattlin_1.png", "images/product_rattlin_2.png"],
@@ -1201,6 +1303,7 @@
             },
             ruffles: {
                 id: 'ruffles',
+                collection: 'chaos',
                 name: "Ruffles",
                 price: "₹450/pack",
                 images: [],
@@ -1213,11 +1316,105 @@
                 variants: "<ul><li>Single Feather Ruffle - light, aerodynamic, and built for precision attacks. Ideal for cats who believe stealth is superior to speed.</li><li>Double Feather Ruffle - flamboyant, flappy, and dramatic. Built for cats who like their chaos extra.</li></ul>",
                 bg: "bg-sage-green",
                 hover: "hover:rotate-1"
+            },
+
+            driftOrb: {
+                id: 'drift-orb',
+                collection: 'calm',
+                name: "Drift Orb",
+                price: "₹800",
+                images: [],
+                emoji: "🌿",
+                tagline: "For the cat who has transcended urgency",
+                thoughtProcess: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A meditative sphere conceived for cats who regard frantic chasing as beneath them. It rolls slowly, wobbles gently, and makes absolutely no promises about where it is going.",
+                technical: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Woven from undyed felted wool with a hollow core that produces a soft, low hum on hardwood floors. Diameter: approximately 6 cm. Diameter of attention span it requires from the human: zero.",
+                purchaseIncludes: "<ul><li>1 x Drift Orb</li><li>A small card that says 'you're doing great'</li></ul>",
+                accessories: null,
+                variants: null,
+                bg: "bg-sage-green",
+                hover: "hover:rotate-1"
+            },
+            whisperWand: {
+                id: 'whisper-wand',
+                collection: 'calm',
+                name: "Whisper Wand",
+                price: "₹650",
+                images: [],
+                emoji: "🌾",
+                tagline: "Gentle enough to not disturb an afternoon nap",
+                thoughtProcess: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. A wand so delicate it barely stirs the air. Designed for cats who prefer their prey to drift toward them on their own terms. Patience is the technique.",
+                technical: "Lorem ipsum consectetur adipiscing. Slender birch dowel hand-sanded to a satin finish, strung with naturally dyed silk ribbons that float rather than flutter. The ribbons respond to the smallest movement — ideal for the minimalist hunter.",
+                purchaseIncludes: "<ul><li>1 x Whisper Wand</li><li>2 x Silk ribbon sets (colours vary)</li></ul>",
+                accessories: null,
+                variants: "<ul><li>Standard length (45 cm) — for indoor sessions</li><li>Extended length (65 cm) — for cats who require more personal space</li></ul>",
+                bg: "bg-teal-feels",
+                hover: "hover:-rotate-1"
+            },
+            driftNest: {
+                id: 'drift-nest',
+                collection: 'calm',
+                name: "Drift Nest",
+                price: "₹1400",
+                images: [],
+                emoji: "🌙",
+                tagline: "A sanctuary for strategic napping",
+                thoughtProcess: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. The Drift Nest exists because cats deserve a place that was built for them on purpose, not just a cardboard box that happened to arrive at the right moment.",
+                technical: "Lorem ipsum dolor sit amet. Hand-loomed from undyed cotton rope with a memory-foam base that holds the shape of one cat, or the ambitions of several. The raised rim provides the sense of containment that many cats find professionally reassuring.",
+                purchaseIncludes: "<ul><li>1 x Drift Nest</li><li>Optional dried lavender sachet (because even calm has its edges)</li></ul>",
+                accessories: null,
+                variants: "<ul><li>Small — one determined cat</li><li>Large — one large cat, or two who are currently on speaking terms</li></ul>",
+                bg: "bg-purple",
+                hover: "hover:rotate-1"
             }
         };
 
         
         let latinInterval;
+        let activeCollection = 'chaos';
+
+        const collectionMeta = {
+            chaos: {
+                heading: 'The Chaos Collection',
+                subheading: 'Toys for discerning connoisseurs of chaos',
+            },
+            calm: {
+                heading: 'The Calm Collection',
+                subheading: 'For cats who prefer the gentle art of observation',
+            }
+        };
+
+        function switchCollection(collection) {
+            if (collection === activeCollection) return;
+            activeCollection = collection;
+
+            const section = document.getElementById('products-section');
+            const pill = document.getElementById('toggle-pill');
+            const chaosBtn = document.getElementById('chaos-toggle-btn');
+            const calmBtn = document.getElementById('calm-toggle-btn');
+            const heading = document.getElementById('products-heading');
+            const subheading = document.getElementById('products-subheading');
+
+            section.classList.add('collection-is-switching');
+
+            setTimeout(() => {
+                const meta = collectionMeta[collection];
+
+                pill.classList.toggle('is-calm', collection === 'calm');
+                chaosBtn.classList.toggle('active', collection === 'chaos');
+                calmBtn.classList.toggle('active', collection === 'calm');
+                chaosBtn.setAttribute('aria-pressed', collection === 'chaos');
+                calmBtn.setAttribute('aria-pressed', collection === 'calm');
+
+                section.classList.toggle('is-calm-bg', collection === 'calm');
+
+                heading.textContent = meta.heading;
+                subheading.textContent = meta.subheading;
+
+                populateProductsPage();
+
+                section.classList.remove('collection-is-switching');
+            }, 180);
+        }
         
         
         const router = {
@@ -1292,12 +1489,13 @@
 
         
         function populateProductsPage() {
-            
+
             const container = document.getElementById('product-list');
             if (!container) return;
             let content = '';
             for (const key in toys) {
                 const toy = toys[key];
+                if (toy.collection !== activeCollection) continue;
                 const hasImages = toy.images && toy.images.length > 0;
                 const mainImage = hasImages ? toy.images[0] : null;
                 content += `
@@ -1400,7 +1598,7 @@
 
             
             let slidesHTML = '';
-            const toyKeys = Object.keys(toys);
+            const toyKeys = Object.keys(toys).filter(k => toys[k].collection === 'chaos');
             toyKeys.forEach(key => {
                 const toy = toys[key];
                 const hasImages = toy.images && toy.images.length > 0;
