@@ -514,6 +514,34 @@
             margin-bottom: 0.25rem;
         }
 
+        .collection-word-toggle {
+            color: #FF6B6B;
+            text-decoration: underline dotted;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 8px;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            animation: hint-pulse 1.4s ease-in-out 0.8s 2;
+        }
+
+        .collection-word-toggle:hover {
+            opacity: 0.7;
+        }
+
+        .collection-word-toggle::after {
+            content: ' ⇄';
+            font-size: 0.5em;
+            vertical-align: super;
+            opacity: 0.55;
+            font-family: system-ui, sans-serif;
+            letter-spacing: 0;
+        }
+
+        @keyframes hint-pulse {
+            0%, 100% { text-decoration-color: #FF6B6B; }
+            50% { text-decoration-color: transparent; }
+        }
+
         .collection-toggle {
             position: relative;
             display: inline-flex;
@@ -719,10 +747,8 @@
         <section class="bg-warm-cream py-16 sm:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <div class="text-center mb-12 sm:mb-16">
-                    <h2 class="text-4xl sm:text-5xl md:text-6xl text-gray-800 mb-4 wiggle-wild">The Chaos Collection
-                    </h2>
-                    <p class="text-lg sm:text-xl text-gray-600 font-medium font-subtitle">Designed by cats, for cats
-                        (and their humans)</p>
+                    <h2 class="text-4xl sm:text-5xl md:text-6xl text-gray-800 mb-4 wiggle-wild">The <span id="home-collection-word" class="collection-word-toggle" onclick="switchHomeCollection()" title="Switch collection">Chaos</span> Collection</h2>
+                    <p class="text-lg sm:text-xl text-gray-600 font-medium font-subtitle" id="home-collection-subtitle">Designed by cats, for cats (and their humans)</p>
                 </div>
                 
                 <div class="max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl mx-auto relative">
@@ -1371,6 +1397,23 @@
         
         let latinInterval;
         let activeCollection = 'chaos';
+        let homeCollection = 'chaos';
+        const homeCarousel = {};
+
+        const homeCollectionMeta = {
+            chaos: { word: 'Chaos', subtitle: 'Designed by cats, for cats (and their humans)' },
+            calm:  { word: 'Calm',  subtitle: 'For cats who prefer the gentle art of observation' }
+        };
+
+        function switchHomeCollection() {
+            homeCollection = homeCollection === 'chaos' ? 'calm' : 'chaos';
+            const meta = homeCollectionMeta[homeCollection];
+            const wordEl = document.getElementById('home-collection-word');
+            const subtitleEl = document.getElementById('home-collection-subtitle');
+            if (wordEl) wordEl.textContent = meta.word;
+            if (subtitleEl) subtitleEl.textContent = meta.subtitle;
+            if (homeCarousel.rebuild) homeCarousel.rebuild(homeCollection);
+        }
 
         const collectionMeta = {
             chaos: {
@@ -1597,33 +1640,36 @@
             let autoScrollInterval = null; 
 
             
-            let slidesHTML = '';
-            const toyKeys = Object.keys(toys).filter(k => toys[k].collection === 'chaos');
-            toyKeys.forEach(key => {
-                const toy = toys[key];
-                const hasImages = toy.images && toy.images.length > 0;
-                const mainImage = hasImages ? toy.images[0] : null;
-                slidesHTML += `
-                <div class="w-full lg:w-1/2 flex-shrink-0 p-2">
-                    <div class="bg-white rounded-3xl p-6 md:p-0 md:flex md:items-center md:gap-6 lg:gap-8 shadow-lg md:h-64 transition-all duration-500 transform ${toy.hover} clickable" onclick="router.goTo('products', { scrollTo: '${toy.id}' })">
-                        <div class="md:w-48 md:h-full md:flex-shrink-0">
-                           <div class="${toy.bg} rounded-2xl md:rounded-l-3xl md:rounded-r-none w-full h-48 md:h-full relative overflow-hidden group">
-                                ${mainImage ? `<img src="${mainImage}" alt="${toy.name}" class="w-full h-full object-contain">` : (toy.emoji ? `<div class="text-white text-6xl bounce-play flex items-center justify-center h-full">${toy.emoji}</div>`:'')}
-                           </div>
+            function buildSlideHTML(collection) {
+                let html = '';
+                Object.keys(toys).filter(k => toys[k].collection === collection).forEach(key => {
+                    const toy = toys[key];
+                    const hasImages = toy.images && toy.images.length > 0;
+                    const mainImage = hasImages ? toy.images[0] : null;
+                    html += `
+                    <div class="w-full lg:w-1/2 flex-shrink-0 p-2">
+                        <div class="bg-white rounded-3xl p-6 md:p-0 md:flex md:items-center md:gap-6 lg:gap-8 shadow-lg md:h-64 transition-all duration-500 transform ${toy.hover} clickable" onclick="router.goTo('products', { scrollTo: '${toy.id}' })">
+                            <div class="md:w-48 md:h-full md:flex-shrink-0">
+                               <div class="${toy.bg} rounded-2xl md:rounded-l-3xl md:rounded-r-none w-full h-48 md:h-full relative overflow-hidden group">
+                                    ${mainImage ? `<img src="${mainImage}" alt="${toy.name}" class="w-full h-full object-contain">` : (toy.emoji ? `<div class="text-white text-6xl bounce-play flex items-center justify-center h-full">${toy.emoji}</div>`:'')}
+                               </div>
+                            </div>
+                            <div class="pt-6 md:pt-0 md:pr-6 md:flex-1 text-center md:text-left">
+                                <h3 class="text-2xl sm:text-3xl text-gray-800 mb-2">${toy.name}</h3>
+                                <p class="text-sm sm:text-base text-gray-600 font-medium mb-4 font-subtitle">${toy.tagline}</p>
+                                <div class="text-2xl sm:text-3xl font-black text-electric-coral">${toy.price}</div>
+                            </div>
                         </div>
-                        <div class="pt-6 md:pt-0 md:pr-6 md:flex-1 text-center md:text-left">
-                            <h3 class="text-2xl sm:text-3xl text-gray-800 mb-2">${toy.name}</h3>
-                            <p class="text-sm sm:text-base text-gray-600 font-medium mb-4 font-subtitle">${toy.tagline}</p>
-                            <div class="text-2xl sm:text-3xl font-black text-electric-coral">${toy.price}</div>
-                        </div>
-                    </div>
-                </div>`;
-            });
-            track.innerHTML = slidesHTML;
-            
+                    </div>`;
+                });
+                return html;
+            }
+
+            track.innerHTML = buildSlideHTML('chaos');
+
             let currentIndex = 0;
             const slides = track.children;
-            const totalSlides = slides.length;
+            let totalSlides = slides.length;
             function getSlidesInView() { return window.innerWidth >= 1024 ? 2 : 1; }
             let numPages = 0;
 
@@ -1750,9 +1796,18 @@
                 updateCarousel(); 
             });
             
-            createCarouselDots(); 
-            updateCarousel(); 
-            startAutoScroll(); 
+            createCarouselDots();
+            updateCarousel();
+            startAutoScroll();
+
+            homeCarousel.rebuild = function(collection) {
+                track.innerHTML = buildSlideHTML(collection);
+                totalSlides = slides.length;
+                currentIndex = 0;
+                createCarouselDots();
+                updateCarousel();
+                resetAutoScroll();
+            };
         }
 
         
