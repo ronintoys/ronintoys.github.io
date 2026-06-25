@@ -513,7 +513,7 @@
                         (and their humans)</p>
                 </div>
                 
-                <div class="max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl mx-auto relative">
+                <div class="max-w-sm sm:max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto relative">
                     
                     <div id="product-carousel" class="overflow-hidden">
                         
@@ -1234,9 +1234,9 @@
                 const mainImage = hasImages ? toy.images[0] : null;
                 slidesHTML += `
                 <div class="w-full lg:w-1/2 flex-shrink-0 p-2">
-                    <div class="bg-white rounded-3xl p-6 md:p-0 md:flex md:items-center md:gap-6 lg:gap-8 shadow-lg md:h-64 transition-all duration-500 transform ${toy.hover} clickable" onclick="router.goTo('products', { scrollTo: '${toy.id}' })">
-                        <div class="md:w-48 md:h-full md:flex-shrink-0">
-                           <div class="${toy.bg} rounded-2xl md:rounded-l-3xl md:rounded-r-none w-full h-48 md:h-full relative overflow-hidden group">
+                    <div class="bg-white rounded-3xl p-6 md:p-0 md:flex md:items-center md:gap-8 shadow-lg md:h-80 transition-all duration-500 transform ${toy.hover} clickable" onclick="router.goTo('products', { scrollTo: '${toy.id}' })">
+                        <div class="md:w-64 md:h-full md:flex-shrink-0">
+                           <div class="${toy.bg} rounded-2xl md:rounded-l-3xl md:rounded-r-none w-full h-64 md:h-full relative overflow-hidden group">
                                 ${mainImage ? `<img src="${mainImage}" alt="${toy.name}" class="w-full h-full object-contain">` : (toy.emoji ? `<div class="text-white text-6xl bounce-play flex items-center justify-center h-full">${toy.emoji}</div>`:'')}
                            </div>
                         </div>
