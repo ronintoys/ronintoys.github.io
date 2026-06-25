@@ -1441,14 +1441,20 @@
         
         function setupWhatMakesDifferent() {
             const tiles = [
-                { "step": "1", "icon": "pets", "color": "text-electric-coral", "title": "Cat-tested toys", "text": "Open-Source Design Hand-assembled by a 1-human, 3-feline team, for human and feline needs alike." },
-                { "step": "2", "icon": "extension", "color": "text-warm-ochre", "title": "Modular Design", "text": "Built to reduce landfill waste - Built on repair culture" },
-                { "step": "3", "icon": "eco", "color": "text-sage-green", "title": "Cat-safe, durable materials", "text": "PLA+ - Organic Cotton String - Wood - Real feathers." },
+                { "step": "1", "icon": "pets", "color": "text-electric-coral", "title": "Cat-tested toys", "text": "* Open-Source Design * Hand-assembled by a 1-human, 3-feline team" },
+                { "step": "2", "icon": "extension", "color": "text-warm-ochre", "title": "Modular Design", "text": "*Built to reduce landfill waste * Built on repair culture" },
+                { "step": "3", "icon": "eco", "color": "text-sage-green", "title": "Cat-safe, durable materials", "text": "*PLA+  *Organic Cotton String * Wood * Real feathers." },
             ];
 
             const mobileGrid = document.getElementById('what-makes-different-mobile-grid');
             const desktopGrid = document.getElementById('what-makes-different-desktop-grid');
             if (!mobileGrid || !desktopGrid) return;
+
+            function toBullets(text, cls) {
+                const items = text.split('*').map(s => s.trim()).filter(Boolean);
+                if (items.length <= 1) return `<p class="text-sm font-medium ${cls}">${text}</p>`;
+                return `<ul class="text-sm font-medium ${cls} text-left space-y-1 list-disc list-inside">${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+            }
 
             let mobileHTML = '';
             let desktopHTML = '';
@@ -1461,7 +1467,7 @@
                         </div>
                         <div>
                             <h3 class="text-xl text-white">${s.title}</h3>
-                            <p class="text-sm text-white font-medium">${s.text}</p>
+                            ${toBullets(s.text, 'text-white')}
                         </div>
                     </div>
 `;
@@ -1472,7 +1478,7 @@
                             <span class="material-symbols-outlined text-white text-3xl">${s.icon}</span>
                         </div>
                         <h3 class="text-2xl text-gray-800 mb-4">${s.title}</h3>
-                        <p class="text-base text-gray-600 font-medium">${s.text}</p>
+                        ${toBullets(s.text, 'text-gray-600')}
                     </div>`;
             });
             mobileGrid.innerHTML = mobileHTML;
